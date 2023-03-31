@@ -1,3 +1,4 @@
+import 'package:biology_fun/app/shared/theme/font.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,54 +12,124 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  CachedNetworkImage(
-                    imageUrl:
-                        'https://res.cloudinary.com/dkkga3pht/image/upload/v1680282731/images/Vector_vppjcq.png',
-                    width: 250,
-                    height: 150,
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
-                    alignment: Alignment.topLeft,
-                  ),
-                  Row(
-                    children: [
-                      const Text('Biology'),
-                      CachedNetworkImage(
-                        imageUrl:
-                            'https://res.cloudinary.com/dkkga3pht/image/upload/v1680284065/microscope_ijsft9.png',
-                        width: 20,
-                        height: 29,
-                        placeholder: (context, url) =>
-                            const CircularProgressIndicator(),
+          child: Form(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    CachedNetworkImage(
+                      imageUrl:
+                          'https://res.cloudinary.com/dkkga3pht/image/upload/v1680294350/Vector_1_mdyxat.png',
+                      width: 250,
+                      height: 150,
+                      placeholder: (context, url) => const Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(),
+                        ),
                       ),
-                      const Text('Fun'),
+                      alignment: Alignment.topLeft,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(
+                        left: 20,
+                        top: 10,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Biology',
+                                style: h1Bold.copyWith(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              CachedNetworkImage(
+                                imageUrl:
+                                    'https://res.cloudinary.com/dkkga3pht/image/upload/v1680284065/microscope_ijsft9.png',
+                                width: 30,
+                                height: 30,
+                                placeholder: (context, url) => const Center(
+                                  child: SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            'Fun',
+                            style: h1Bold.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 16.0,
+                    right: 16,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Login', style: h1Bold),
+                      const SizedBox(
+                        height: 32,
+                      ),
+                      Text('Username', style: body2Regular),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(hintText: 'Username'),
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      Text('Password', style: body2Regular),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      const TextField(
+                        decoration: InputDecoration(hintText: 'Password'),
+                      ),
+                      const SizedBox(
+                        height: 36,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 56,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: const Text('Login'),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 22,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 56,
+                        child: OutlinedButton(
+                          onPressed: () {},
+                          child: const Text('Kembali'),
+                        ),
+                      )
                     ],
                   ),
-                ],
-              ),
-              const Text('Login'),
-              const Text('Username'),
-              const Text('Password'),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Login'),
                 ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  child: const Text('Kembali'),
-                ),
-              )
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -18,6 +18,28 @@ ThemeData themeData = ThemeData(
   ),
   inputDecorationTheme: InputDecorationTheme(
     hintStyle: placeholder.copyWith(color: greyColor),
+    border: InputBorder.none,
+    outlineBorder: const BorderSide(
+      color: greyColor,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(
+        color: greyColor,
+      ),
+    ),
+    focusedBorder:  OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(
+        color: greyColor,
+      ),
+    ),
+    focusedErrorBorder:  OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(
+        color: greyColor,
+      ),
+    ),
   ),
   scaffoldBackgroundColor: backgroundColor,
   outlinedButtonTheme: OutlinedButtonThemeData(
