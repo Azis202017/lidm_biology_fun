@@ -90,8 +90,10 @@ class LoginView extends GetView<LoginController> {
                       const SizedBox(
                         height: 8,
                       ),
-                      const TextField(
-                        decoration: InputDecoration(hintText: 'Username'),
+                      TextField(
+                        autocorrect: false,
+                        controller: controller.passwordController,
+                        decoration: const InputDecoration(hintText: 'Username'),
                       ),
                       const SizedBox(
                         height: 24,
@@ -100,8 +102,12 @@ class LoginView extends GetView<LoginController> {
                       const SizedBox(
                         height: 8,
                       ),
-                      const TextField(
-                        decoration: InputDecoration(hintText: 'Password'),
+                      TextField(
+                        autocorrect: false,
+                        controller: controller.passwordController,
+                        decoration: const InputDecoration(
+                          hintText: 'Password',
+                        ),
                       ),
                       const SizedBox(
                         height: 36,
