@@ -121,10 +121,8 @@ class LoginView extends GetView<LoginController> {
                         width: double.infinity,
                         height: 56,
                         child: ElevatedButton(
-                          onPressed: () {
-                            controller.login();
-                          },
-                          child: const Text('Login'),
+                          onPressed: controller.login,
+                          child: const Text('Masuk'),
                         ),
                       ),
                       const SizedBox(
@@ -134,8 +132,8 @@ class LoginView extends GetView<LoginController> {
                         width: double.infinity,
                         height: 56,
                         child: OutlinedButton(
-                          onPressed: () {},
-                          child: const Text('Kembali'),
+                          onPressed: controller.toRegisterPage,
+                          child: const Text('Daftar'),
                         ),
                       )
                     ],

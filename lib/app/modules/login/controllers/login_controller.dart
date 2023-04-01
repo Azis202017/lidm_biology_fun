@@ -25,12 +25,15 @@ class LoginController extends GetxController {
       Get.snackbar('Login Gagal', 'Username sama password salah');
     }
   }
+  void toRegisterPage() {
+    Get.toNamed(Routes.LOGIN);
+  }
 
   String? userValidate(String? value) {
-    if (value!.isNotEmpty && value.length > 7) {
+    if (value!.isNotEmpty ) {
       return null;
     } else {
-      return 'Username harus lebih dari 7 kata';
+      return 'Username harus diisi';
     }
   }
    String? passwordValidate(String? value) {
