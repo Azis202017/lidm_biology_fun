@@ -28,7 +28,7 @@ class LoginController extends GetxController {
     }
   }
   void toRegisterPage() {
-    Get.toNamed(Routes.LOGIN);
+    Get.toNamed(Routes.REGISTER);
   }
 
   String? userValidate(String? value) {
