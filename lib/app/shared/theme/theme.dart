@@ -28,16 +28,22 @@ ThemeData themeData = ThemeData(
         color: greyColor,
       ),
     ),
-    focusedBorder:  OutlineInputBorder(
+    focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
       borderSide: const BorderSide(
         color: greyColor,
       ),
     ),
-    focusedErrorBorder:  OutlineInputBorder(
+    focusedErrorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
       borderSide: const BorderSide(
         color: greyColor,
+      ),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(
+        color: redColor,
       ),
     ),
   ),

@@ -13,6 +13,7 @@ class LoginView extends GetView<LoginController> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Form(
+            key: controller.formGlobalKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -90,9 +91,11 @@ class LoginView extends GetView<LoginController> {
                       const SizedBox(
                         height: 8,
                       ),
-                      TextField(
+                      TextFormField(
+                        autovalidateMode: AutovalidateMode.always,
                         autocorrect: false,
-                        controller: controller.passwordController,
+                        validator: controller.userValidate,
+                        controller: controller.usernameController,
                         decoration: const InputDecoration(hintText: 'Username'),
                       ),
                       const SizedBox(
@@ -102,8 +105,10 @@ class LoginView extends GetView<LoginController> {
                       const SizedBox(
                         height: 8,
                       ),
-                      TextField(
+                      TextFormField(
+                        autovalidateMode: AutovalidateMode.always,
                         autocorrect: false,
+                        validator: controller.passwordValidate,
                         controller: controller.passwordController,
                         decoration: const InputDecoration(
                           hintText: 'Password',
@@ -116,7 +121,9 @@ class LoginView extends GetView<LoginController> {
                         width: double.infinity,
                         height: 56,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.login();
+                          },
                           child: const Text('Login'),
                         ),
                       ),
