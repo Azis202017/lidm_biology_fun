@@ -1,7 +1,8 @@
+import 'package:biology_fun/app/constant/api_url.dart';
 import 'package:http/http.dart' as http;
 
 class LoginServices {
-  final String baseUrl = 'https://f559-2001-448a-3025-13cb-752a-9304-e329-e4e3.ngrok.io';
+  final String baseUrl = apiUrl;
   Future<bool> loginUser({String? username, String? password}) async {
     try { 
       Uri uri = Uri.parse('$baseUrl/api/login');
