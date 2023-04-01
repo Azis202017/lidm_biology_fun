@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool obsecure = true;
   final formGlobalKey = GlobalKey<FormState>();
   void validateLogin() {
     if (formGlobalKey.currentState!.validate()) {
@@ -43,6 +44,10 @@ class LoginController extends GetxController {
     } else {
       return 'Password harus diisi';
     }
+  }
+  void changeObsecure() {
+    obsecure = !obsecure;
+    update();
   }
 
   @override

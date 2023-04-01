@@ -17,12 +17,12 @@ class ListOfClass {
 
     bool? success;
     String? message;
-    List<Classes>? data;
+    List<Classroom>? data;
 
     ListOfClass copyWith({
         bool? success,
         String? message,
-        List<Classes>? data,
+        List<Classroom>? data,
     }) => 
         ListOfClass(
             success: success ?? this.success,
@@ -33,7 +33,7 @@ class ListOfClass {
     factory ListOfClass.fromJson(Map<String, dynamic> json) => ListOfClass(
         success: json["success"],
         message: json["message"],
-        data: json["data"] == null ? [] : List<Classes>.from(json["data"]!.map((x) => Classes.fromJson(x))),
+        data: json["data"] == null ? [] : List<Classroom>.from(json["data"]!.map((x) => Classroom.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -43,8 +43,8 @@ class ListOfClass {
     };
 }
 
-class Classes {
-    Classes({
+class Classroom {
+    Classroom({
         this.id,
         this.name,
         this.createdAt,
@@ -56,20 +56,20 @@ class Classes {
     DateTime? createdAt;
     DateTime? updatedAt;
 
-    Classes copyWith({
+    Classroom copyWith({
         String? id,
         String? name,
         DateTime? createdAt,
         DateTime? updatedAt,
     }) => 
-        Classes(
+        Classroom(
             id: id ?? this.id,
             name: name ?? this.name,
             createdAt: createdAt ?? this.createdAt,
             updatedAt: updatedAt ?? this.updatedAt,
         );
 
-    factory Classes.fromJson(Map<String, dynamic> json) => Classes(
+    factory Classroom.fromJson(Map<String, dynamic> json) => Classroom(
         id: json["id"],
         name: json["name"],
         createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
