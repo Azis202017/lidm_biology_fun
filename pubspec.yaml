@@ -12,7 +12,8 @@ dependencies:
   google_fonts: ^4.0.3
   http: 0.13.5
   copy_with_extension_gen: 5.0.2
-  build_runner: 2.3.3 
+  build_runner: 2.3.3
+  im_stepper: 1.0.1+1
   flutter: 
     sdk: flutter
 
