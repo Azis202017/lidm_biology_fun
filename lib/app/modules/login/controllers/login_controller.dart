@@ -22,7 +22,7 @@ class LoginController extends GetxController {
         username: usernameController.text, password: passwordController.text);
     if (isLogin) {
       Get.snackbar('Login Success', 'Login Berhasil');
-      Get.toNamed(Routes.HOME);
+      Get.offAndToNamed(Routes.HOME);
     } else {
       Get.snackbar('Login Gagal', 'Username sama password salah');
     }
