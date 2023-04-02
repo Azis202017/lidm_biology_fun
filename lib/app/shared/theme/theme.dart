@@ -69,3 +69,11 @@ ThemeData themeData = ThemeData(
     secondary: secondaryColor,
   ),
 );
+List<BoxShadow> cardShadow = [
+  const BoxShadow(
+    spreadRadius: -4,
+    blurRadius: 12,
+    color: Color.fromRGBO(184, 184, 210, 0.2),
+    offset: Offset(0, 8),
+  )
+];
