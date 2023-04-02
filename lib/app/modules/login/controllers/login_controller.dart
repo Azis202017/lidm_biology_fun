@@ -1,5 +1,7 @@
+import 'package:biology_fun/app/data/model/error/login_error_model.dart';
 import 'package:biology_fun/app/routes/app_pages.dart';
-import 'package:biology_fun/app/services/login_services.dart';
+import 'package:biology_fun/app/services/login/login_error_service.dart';
+import 'package:biology_fun/app/services/login/login_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +9,7 @@ class LoginController extends GetxController {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool obsecure = true;
+  bool loading = false;
   final formGlobalKey = GlobalKey<FormState>();
   void validateLogin() {
     if (formGlobalKey.currentState!.validate()) {
@@ -18,33 +21,44 @@ class LoginController extends GetxController {
   }
 
   void login() async {
-    bool isLogin = await LoginServices().loginUser(
-        username: usernameController.text, password: passwordController.text);
-    if (isLogin) {
-      Get.snackbar('Login Success', 'Login Berhasil');
-      Get.offAndToNamed(Routes.HOME);
-    } else {
-      Get.snackbar('Login Gagal', 'Username sama password salah');
+    if (formGlobalKey.currentState!.validate()) {
+      formGlobalKey.currentState!.save();
+      loading = true;
+      bool isLogin = await LoginServices().loginUser(
+          username: usernameController.text, password: passwordController.text);
+      loading = false;
+      update();
+      LoginError loginError = await LoginErrorService().errorLog(
+          username: usernameController.text, password: passwordController.text);
+      if (isLogin) {
+        Get.snackbar('Login Success', 'Login Berhasil');
+        Get.offAndToNamed(Routes.HOME);
+      } else {
+        Get.snackbar('Login Gagal', loginError.message!);
+      }
     }
   }
+
   void toRegisterPage() {
     Get.toNamed(Routes.REGISTER);
   }
 
   String? userValidate(String? value) {
-    if (value!.isNotEmpty ) {
+    if (value!.isNotEmpty) {
       return null;
     } else {
       return 'Username harus diisi';
     }
   }
-   String? passwordValidate(String? value) {
+
+  String? passwordValidate(String? value) {
     if (value!.isNotEmpty) {
       return null;
     } else {
       return 'Password harus diisi';
     }
   }
+
   void changeObsecure() {
     obsecure = !obsecure;
     update();
