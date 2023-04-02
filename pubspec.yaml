@@ -2,26 +2,26 @@ name: biology_fun
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
+environment:
   sdk: '>=2.19.4 <3.0.0'
 
-dependencies: 
+dependencies:
+  build_runner: 2.3.3
   cached_network_image: 3.2.3
+  copy_with_extension_gen: 5.0.2
   cupertino_icons: ^1.0.2
+  dropdown_search: ^5.0.6
+  flutter:
+    sdk: flutter
   get: 4.6.5
   google_fonts: ^4.0.3
   http: 0.13.5
-  copy_with_extension_gen: 5.0.2
-  build_runner: 2.3.3
   im_stepper: 1.0.1+1
-  flutter: 
-    sdk: flutter
 
-dev_dependencies: 
+dev_dependencies:
   flutter_lints: 2.0.1
-  flutter_test: 
+  flutter_test:
     sdk: flutter
 
-flutter: 
+flutter:
   uses-material-design: true
-

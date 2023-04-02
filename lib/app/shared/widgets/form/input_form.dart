@@ -18,7 +18,7 @@ class InputForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autovalidateMode: AutovalidateMode.always,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       autocorrect: false,
       validator: validator,
       controller: controller,
@@ -26,6 +26,7 @@ class InputForm extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         suffixIcon: suffixIcon,
+
       ),
     );
   }
