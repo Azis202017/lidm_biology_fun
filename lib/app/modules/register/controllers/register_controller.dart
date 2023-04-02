@@ -1,5 +1,5 @@
 import 'package:biology_fun/app/routes/app_pages.dart';
-import 'package:biology_fun/app/services/register_services.dart';
+import 'package:biology_fun/app/services/register/register_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -76,18 +76,21 @@ class RegisterController extends GetxController {
   }
 
   void saveDataRegister() async {
-    _isRegisterSuccess = await RegisterServices().register(
-      fullName: fullNameController.text,
-      classId: classId,
-      username: usernameController.text,
-      password: passwordController.text,
-      passwordConfirmation: passwordConfirmController.text,
-      classroomName: classroomName
-    );
-    if (_isRegisterSuccess) {
-      Get.snackbar("Register Berhasil", "Register Berhasil");
-    } else {
-      Get.snackbar("Register Tidak Berhasil", "Register tidak berhasil");
+    if (formGlobalKey.currentState!.validate()) {
+      formGlobalKey.currentState!.save();
+      _isRegisterSuccess = await RegisterServices().register(
+          fullName: fullNameController.text,
+          classId: classId,
+          username: usernameController.text,
+          password: passwordController.text,
+          passwordConfirmation: passwordConfirmController.text,
+          classroomName: classroomName);
+      if (_isRegisterSuccess) {
+        Get.snackbar("Register Berhasil", "Register Berhasil");
+      } else {
+        Get.snackbar("Register Tidak Berhasil", "Register tidak berhasil");
+      }
     }
   }
+  
 }
