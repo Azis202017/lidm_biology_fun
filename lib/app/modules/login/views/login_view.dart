@@ -10,8 +10,7 @@ class LoginView extends GetView<LoginController> {
   const LoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LoginController>(
-      builder: (_) {
+    return GetBuilder<LoginController>(builder: (_) {
       return Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
@@ -41,7 +40,6 @@ class LoginView extends GetView<LoginController> {
                           validator: controller.userValidate,
                           controller: controller.usernameController,
                           hintText: 'Masukkan username ...',
-
                         ),
                         const SizedBox(
                           height: 24,
@@ -54,7 +52,11 @@ class LoginView extends GetView<LoginController> {
                           validator: controller.passwordValidate,
                           controller: controller.passwordController,
                           isPassword: controller.obsecure,
-                          suffixIcon: IconButton(onPressed: controller.changeObsecure, icon: controller.obsecure ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off)),
+                          suffixIcon: IconButton(
+                              onPressed: controller.changeObsecure,
+                              icon: controller.obsecure
+                                  ? const Icon(Icons.visibility)
+                                  : const Icon(Icons.visibility_off)),
                           hintText: 'Masukkan password ...',
                         ),
                         const SizedBox(
@@ -65,7 +67,22 @@ class LoginView extends GetView<LoginController> {
                           height: 56,
                           child: ElevatedButton(
                             onPressed: controller.login,
-                            child: const Text('Masuk'),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text('Masuk'),
+                                const SizedBox(width: 8,),
+                                controller.loading
+                                    ? const SizedBox(
+                                      width:24,
+                                      height: 24, 
+                                      child: CircularProgressIndicator(
+                                          color: Colors.white,
+                                        ),
+                                    )
+                                    : const SizedBox(),
+                              ],
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -91,4 +108,3 @@ class LoginView extends GetView<LoginController> {
     });
   }
 }
-
