@@ -1,24 +1,179 @@
+import 'package:biology_fun/app/shared/theme/color.dart';
+import 'package:biology_fun/app/shared/theme/font.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../shared/theme/theme.dart';
+import '../../../shared/widgets/images/image_cache.dart';
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
+    Get.put(HomeController());
+
+    return GetBuilder<HomeController>(initState: (controller) {
+      controller.controller?.fetchProfile();
+    }, builder: (controller) {
+      return Scaffold(
+        body: SafeArea(
+          child: controller.loading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: 183,
+                            color: primaryColor,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 60.0,
+                              left: 16,
+                              right: 16,
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '${controller.user!.data!.username}',
+                                          style: h2Bold.copyWith(
+                                              color: Colors.white),
+                                        ),
+                                        Text(
+                                          'Ayo tingkatkan belajarmu!',
+                                          style: h5Regular.copyWith(
+                                            color: Colors.white,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    const CacheImage(
+                                      imageUrl:
+                                          'https://res.cloudinary.com/dkkga3pht/image/upload/v1680436809/Avatar_djrak9.png',
+                                      width: 56,
+                                      height: 56,
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                    boxShadow: cardShadow,
+                                  ),
+                                  padding: const EdgeInsets.all(
+                                    16,
+                                  ),
+                                  height: 96,
+                                  margin: const EdgeInsets.only(
+                                    top: 20,
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Belajar hari ini',
+                                            style: body2Regular.copyWith(
+                                              color: grey2Color,
+                                            ),
+                                          ),
+                                          Text(
+                                            '10 Materi',
+                                            style: bodyBold,
+                                          ),
+                                        ],
+                                      ),
+                                      InkWell(
+                                        child: Text(
+                                          'Belajar lagi',
+                                          style: body2Regular.copyWith(
+                                            color: primaryColor,
+                                          ),
+                                        ),
+                                        onTap: () => print('aku ditap'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 16.0,
+                          right: 16,
+                          top: 16.0,
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                                height: 154,
+                                padding: const EdgeInsets.only(
+                                  left: 16,
+                                  top: 18.5,
+                                ),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: blueAccentColor,
+                                ),
+                                width: double.infinity,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                        top: 20,
+                                      ),
+                                      width: 200,
+                                      child: Text(
+                                        'Ayo Semangat Belajar',
+                                        style: h2Bold,
+                                      ),
+                                    ),
+                                    const CacheImage(
+                                      imageUrl:
+                                          'https://res.cloudinary.com/dkkga3pht/image/upload/v1680440420/Group_130_tt4plu.png',
+                                      width: 118,
+                                      height: 134.21,
+                                      alignment: Alignment.bottomRight,
+                                    )
+                                  ],
+                                )),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
