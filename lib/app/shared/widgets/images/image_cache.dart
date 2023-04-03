@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
-part 'image_cache.g.dart';
 
 @CopyWith()
 class CacheImage extends StatelessWidget {
@@ -10,14 +9,14 @@ class CacheImage extends StatelessWidget {
   final Alignment? alignment;
   final double? width;
   final double? height;
-
+  final BoxFit? fit;
   const CacheImage({
     required this.imageUrl,
     this.placeHolder,
     this.alignment,
     this.width,
     this.height,
-    
+    this.fit,
     super.key,
   });
 
@@ -28,6 +27,7 @@ class CacheImage extends StatelessWidget {
       width: width ?? 0,
       height: height ?? 0,
       placeholder: (context, url) => placeHolder ?? const SizedBox(),
+      fit: fit,
       alignment: alignment ?? Alignment.topCenter,
     );
   }
