@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/bottom_navigation/bindings/bottom_navigation_binding.dart';
+import '../modules/bottom_navigation/views/bottom_navigation_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -29,6 +31,11 @@ class AppPages {
       name: _Paths.REGISTER,
       page: () => const RegisterView(),
       binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOTTOM_NAVIGATION,
+      page: () => const BottomNavigationView(),
+      binding: BottomNavigationBinding(),
     ),
   ];
 }
