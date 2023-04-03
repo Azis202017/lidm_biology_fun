@@ -68,6 +68,12 @@ ThemeData themeData = ThemeData(
     primary: primaryColor,
     secondary: secondaryColor,
   ),
+  bottomNavigationBarTheme:  BottomNavigationBarThemeData(
+    unselectedItemColor: greyColor.withOpacity(0.4),
+    unselectedLabelStyle: buttonLinkXSBold.copyWith(color: greyColor.withOpacity(0.5)),
+    selectedLabelStyle:  buttonLinkXSBold,
+    
+  ),
 );
 List<BoxShadow> cardShadow = [
   const BoxShadow(
