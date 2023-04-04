@@ -53,14 +53,7 @@ class BottomNavigationView extends GetView<BottomNavigationController> {
                     label: 'Pelajaran',
                     tooltip: 'Pelajaran',
                   ),
-                  BottomNavigationBarItem(
-                    icon: ImageIcon(
-                      NetworkImage(
-                          'https://res.cloudinary.com/dkkga3pht/image/upload/v1680442677/off_rnpomg.png'),
-                    ),
-                    label: 'Pesan',
-                    tooltip: 'Pesan',
-                  ),
+                
                   BottomNavigationBarItem(
                     icon: ImageIcon(
                       NetworkImage(

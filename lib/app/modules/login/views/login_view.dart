@@ -71,15 +71,17 @@ class LoginView extends GetView<LoginController> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Text('Masuk'),
-                                const SizedBox(width: 8,),
+                                const SizedBox(
+                                  width: 8,
+                                ),
                                 controller.loading
                                     ? const SizedBox(
-                                      width:24,
-                                      height: 24, 
-                                      child: CircularProgressIndicator(
+                                        width: 24,
+                                        height: 24,
+                                        child: CircularProgressIndicator(
                                           color: Colors.white,
                                         ),
-                                    )
+                                      )
                                     : const SizedBox(),
                               ],
                             ),

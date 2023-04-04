@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../../shared/theme/theme.dart';
 import '../../../shared/widgets/images/image_cache.dart';
 import '../controllers/home_controller.dart';
@@ -131,41 +132,32 @@ class HomeView extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
-                            Container(
-                                height: 154,
-                                padding: const EdgeInsets.only(
-                                  left: 16,
-                                  top: 18.5,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: blueAccentColor,
-                                ),
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(
-                                        top: 20,
+                            SizedBox(
+                              height: 400,
+                              child: GridView.builder(
+                                  shrinkWrap: true,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithMaxCrossAxisExtent(
+                                          maxCrossAxisExtent: 200,
+                                          childAspectRatio: 3 / 2,
+                                          crossAxisSpacing: 20,
+                                          mainAxisSpacing: 20),
+                                  itemCount: [10,20,30,40,60,70,90].length,
+                                  itemBuilder: (BuildContext ctx, index) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                      },
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            color: Colors.amber,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        child: const Text('index'),
                                       ),
-                                      width: 200,
-                                      child: Text(
-                                        'Ayo Semangat Belajar',
-                                        style: h2Bold,
-                                      ),
-                                    ),
-                                    const CacheImage(
-                                      imageUrl:
-                                          'https://res.cloudinary.com/dkkga3pht/image/upload/v1680440420/Group_130_tt4plu.png',
-                                      width: 118,
-                                      height: 134.21,
-                                      alignment: Alignment.bottomRight,
-                                    )
-                                  ],
-                                )),
+                                    );
+                                  }),
+                            )
                           ],
                         ),
                       ),
