@@ -32,12 +32,8 @@ class PuzzleView extends GetView<PuzzleController> {
               // ignore: avoid_print
               print('finished!');
             },
-            snapSensitivity: .5, // Between 0 and 1
-            puzzleKey: puzzleKey,
-            onBlockSuccess: () {
-              // ignore: avoid_print
-              print('block success!');
-            },
+            snapSensitivity: .5, 
+            puzzleKey: puzzleKey,  
           )
         ],
       ),
