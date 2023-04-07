@@ -33,7 +33,8 @@ class PuzzleView extends GetView<PuzzleController> {
               print('finished!');
             },
             snapSensitivity: .5, 
-            puzzleKey: puzzleKey,  
+            puzzleKey: puzzleKey, 
+             
           )
         ],
       ),
