@@ -8,7 +8,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-
+import '../modules/puzzle/bindings/puzzle_binding.dart';
+import '../modules/puzzle/views/puzzle_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 
@@ -17,7 +18,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.BOTTOM_NAVIGATION;
+  static const INITIAL = Routes.PUZZLE;
 
   static final routes = [
     GetPage(
@@ -44,6 +45,11 @@ class AppPages {
       name: _Paths.ACCOUNT,
       page: () => const AccountView(),
       binding: AccountBinding(),
+    ),
+    GetPage(
+      name: _Paths.PUZZLE,
+      page: () => const PuzzleView(),
+      binding: PuzzleBinding(),
     ),
   ];
 }

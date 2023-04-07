@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.3"
+  archive:
+    dependency: transitive
+    description:
+      name: archive
+      sha256: d6347d54a2d8028e0437e3c099f66fdb8ae02c4720c1e7534c9f24c10351f85d
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.6"
   args:
     dependency: transitive
     description:
@@ -137,6 +145,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  carousel_slider:
+    dependency: transitive
+    description:
+      name: carousel_slider
+      sha256: "9c695cc963bf1d04a47bd6021f68befce8970bcd61d24938e1fb0918cf5d9c42"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.1"
   characters:
     dependency: transitive
     description:
@@ -153,6 +169,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
+  clip_shadow:
+    dependency: transitive
+    description:
+      name: clip_shadow
+      sha256: "66ff7c13cae58e7714c493408311a7da472c7065e6c97797c1637e024498fa0f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.1"
   clock:
     dependency: transitive
     description:
@@ -286,6 +310,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.0"
+  flutter_jigsaw_puzzle:
+    dependency: "direct main"
+    description:
+      name: flutter_jigsaw_puzzle
+      sha256: "9198fad1a1142254e32409a90460d0d1e66a755fc850686a75e52bb1662ee21f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -424,6 +456,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  image:
+    dependency: transitive
+    description:
+      name: image
+      sha256: "8e9d133755c3e84c73288363e6343157c383a0c6c56fc51afcc5d4d7180306d6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.0"
   io:
     dependency: transitive
     description:
@@ -616,6 +656,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.2"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      sha256: "49392a45ced973e8d94a85fdb21293fbb40ba805fc49f2965101ae748a3683b4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.0"
   platform:
     dependency: transitive
     description:
@@ -632,6 +680,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  pointycastle:
+    dependency: transitive
+    description:
+      name: pointycastle
+      sha256: c3120a968135aead39699267f4c74bc9a08e4e909e86bc1b0af5bfd78691123c
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.7.2"
   pool:
     dependency: transitive
     description:
@@ -845,6 +901,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      sha256: "979ee37d622dec6365e2efa4d906c37470995871fe9ae080d967e192d88286b5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.2"
   yaml:
     dependency: transitive
     description:

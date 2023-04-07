@@ -7,6 +7,7 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const BOTTOM_NAVIGATION = _Paths.BOTTOM_NAVIGATION;
   static const ACCOUNT = _Paths.ACCOUNT;
+  static const PUZZLE = _Paths.PUZZLE;
 }
 
 abstract class _Paths {
@@ -16,5 +17,5 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const BOTTOM_NAVIGATION = '/bottom-navigation';
   static const ACCOUNT = '/account';
-
+  static const PUZZLE = '/puzzle';
 }
