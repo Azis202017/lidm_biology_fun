@@ -28,12 +28,14 @@ class LoginController extends GetxController {
           username: usernameController.text, password: passwordController.text);
       loading = false;
       update();
-      LoginError loginError = await LoginErrorService().errorLog(
-          username: usernameController.text, password: passwordController.text);
+
       if (isLogin) {
         Get.snackbar('Login Success', 'Login Berhasil');
         Get.offAndToNamed(Routes.BOTTOM_NAVIGATION);
       } else {
+        LoginError loginError = await LoginErrorService().errorLog(
+            username: usernameController.text,
+            password: passwordController.text);
         Get.snackbar('Login Gagal', loginError.message!);
       }
     }

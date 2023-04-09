@@ -7,133 +7,91 @@ String userToJson(User data) => json.encode(data.toJson());
 
 class User {
     User({
-        this.success,
-        this.message,
-        this.data,
+        required this.success,
+        required this.message,
+        required this.data,
     });
 
-    bool? success;
-    String? message;
-    Data? data;
-
-    User copyWith({
-        bool? success,
-        String? message,
-        Data? data,
-    }) => 
-        User(
-            success: success ?? this.success,
-            message: message ?? this.message,
-            data: data ?? this.data,
-        );
+    bool success;
+    String message;
+    Data data;
 
     factory User.fromJson(Map<String, dynamic> json) => User(
         success: json["success"],
         message: json["message"],
-        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+        data: Data.fromJson(json["data"]),
     );
 
     Map<String, dynamic> toJson() => {
         "success": success,
         "message": message,
-        "data": data?.toJson(),
+        "data": data.toJson(),
     };
 }
 
 class Data {
     Data({
-        this.id,
-        this.username,
-        this.role,
-        this.createdAt,
-        this.updatedAt,
-        this.student,
+        required this.id,
+        required this.username,
+        required this.role,
+        required this.createdAt,
+        required this.updatedAt,
+        required this.student,
     });
 
-    String? id;
-    String? username;
-    String? role;
-    DateTime? createdAt;
-    DateTime? updatedAt;
-    Student? student;
-
-    Data copyWith({
-        String? id,
-        String? username,
-        String? role,
-        DateTime? createdAt,
-        DateTime? updatedAt,
-        Student? student,
-    }) => 
-        Data(
-            id: id ?? this.id,
-            username: username ?? this.username,
-            role: role ?? this.role,
-            createdAt: createdAt ?? this.createdAt,
-            updatedAt: updatedAt ?? this.updatedAt,
-            student: student ?? this.student,
-        );
+    String id;
+    String username;
+    String role;
+    DateTime createdAt;
+    DateTime updatedAt;
+    Student student;
 
     factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["id"],
         username: json["username"],
         role: json["role"],
-        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
-        student: json["student"] == null ? null : Student.fromJson(json["student"]),
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        student: Student.fromJson(json["student"]),
     );
 
     Map<String, dynamic> toJson() => {
         "id": id,
         "username": username,
         "role": role,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
-        "student": student?.toJson(),
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+        "student": student.toJson(),
     };
 }
 
 class Student {
     Student({
-        this.id,
-        this.userId,
-        this.classId,
-        this.fullname,
-        this.createdAt,
-        this.updatedAt,
+        required this.id,
+        required this.userId,
+        required this.classId,
+        required this.fullname,
+        required this.createdAt,
+        required this.updatedAt,
+        required this.studentClass,
     });
 
-    String? id;
-    String? userId;
-    String? classId;
-    String? fullname;
-    DateTime? createdAt;
-    DateTime? updatedAt;
-
-    Student copyWith({
-        String? id,
-        String? userId,
-        String? classId,
-        String? fullname,
-        DateTime? createdAt,
-        DateTime? updatedAt,
-    }) => 
-        Student(
-            id: id ?? this.id,
-            userId: userId ?? this.userId,
-            classId: classId ?? this.classId,
-            fullname: fullname ?? this.fullname,
-            createdAt: createdAt ?? this.createdAt,
-            updatedAt: updatedAt ?? this.updatedAt,
-        );
+    String id;
+    String userId;
+    String classId;
+    String fullname;
+    DateTime createdAt;
+    DateTime updatedAt;
+    Class studentClass;
 
     factory Student.fromJson(Map<String, dynamic> json) => Student(
         id: json["id"],
         userId: json["user_id"],
         classId: json["class_id"],
         fullname: json["fullname"],
-        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        studentClass: Class.fromJson(json["class"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -141,7 +99,36 @@ class Student {
         "user_id": userId,
         "class_id": classId,
         "fullname": fullname,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+        "class": studentClass.toJson(),
+    };
+}
+
+class Class {
+    Class({
+        required this.id,
+        required this.name,
+        required this.createdAt,
+        required this.updatedAt,
+    });
+
+    String id;
+    String name;
+    DateTime createdAt;
+    DateTime updatedAt;
+
+    factory Class.fromJson(Map<String, dynamic> json) => Class(
+        id: json["id"],
+        name: json["name"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
     };
 }

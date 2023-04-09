@@ -7,7 +7,6 @@ class BottomNavigationController extends GetxController {
   int selectedIndex = 0;
   List<Widget> page = [
     const HomeView(),
-    const Center(child: Text('Ini pelajaran')),
     const AccountView(),
   ];
   void onItemTapped(int index) {

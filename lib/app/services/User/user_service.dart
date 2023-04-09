@@ -11,8 +11,11 @@ class UserService {
     try {
       final box = GetStorage();
       Uri uri = Uri.parse('$apiUrl/profile');
+      // http.Response response = await http
+      //     .get(uri, headers: {'Authorization': 'Bearer ${box.read('token')}'});
       http.Response response = await http
           .get(uri, headers: {'Authorization': 'Bearer ${box.read('token')}'});
+    
       return User.fromJson(json.decode(response.body));
     } catch (e) {
       throw Exception(e);

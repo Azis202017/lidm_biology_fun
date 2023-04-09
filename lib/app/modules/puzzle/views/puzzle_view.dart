@@ -13,7 +13,7 @@ class PuzzleView extends GetView<PuzzleController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PuzzleView'),
+        title: const Text('Jantung'),
         centerTitle: true,
       ),
       body: Column(
@@ -26,6 +26,7 @@ class PuzzleView extends GetView<PuzzleController> {
           ),
           JigsawPuzzle(
             gridSize: 3,
+            
             image: const AssetImage(
                 'assets/images/puzzle.png'),
             onFinished: () {

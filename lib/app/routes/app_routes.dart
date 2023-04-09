@@ -8,6 +8,9 @@ abstract class Routes {
   static const BOTTOM_NAVIGATION = _Paths.BOTTOM_NAVIGATION;
   static const ACCOUNT = _Paths.ACCOUNT;
   static const PUZZLE = _Paths.PUZZLE;
+  static const QUIZ = _Paths.QUIZ;
+  static const QUIZ_DETAIL = _Paths.QUIZ_DETAIL;
+  static const AR = _Paths.AR;
 }
 
 abstract class _Paths {
@@ -18,4 +21,7 @@ abstract class _Paths {
   static const BOTTOM_NAVIGATION = '/bottom-navigation';
   static const ACCOUNT = '/account';
   static const PUZZLE = '/puzzle';
+  static const QUIZ = '/quiz';
+  static const QUIZ_DETAIL = '/quiz-detail';
+  static const AR = '/ar';
 }

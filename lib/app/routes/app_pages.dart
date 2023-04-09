@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/account/bindings/account_binding.dart';
 import '../modules/account/views/account_view.dart';
+import '../modules/ar/bindings/ar_binding.dart';
+import '../modules/ar/views/ar_view.dart';
 import '../modules/bottom_navigation/bindings/bottom_navigation_binding.dart';
 import '../modules/bottom_navigation/views/bottom_navigation_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -18,7 +20,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.PUZZLE;
+  static const INITIAL = Routes.LOGIN;
 
   static final routes = [
     GetPage(
@@ -50,6 +52,11 @@ class AppPages {
       name: _Paths.PUZZLE,
       page: () => const PuzzleView(),
       binding: PuzzleBinding(),
+    ),
+    GetPage(
+      name: _Paths.AR,
+      page: () => const ArView(),
+      binding: ArBinding(),
     ),
   ];
 }

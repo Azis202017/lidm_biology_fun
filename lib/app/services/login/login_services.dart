@@ -13,14 +13,31 @@ class LoginServices {
         'username': username,
         'password': password,
       });
-    
+
       if (response.statusCode == 200) {
-        box.write('token', json.decode(response.body)['token']);
+        box.write('token', json.decode(response.body)['data']['token']);
         return true;
       }
       return false;
     } catch (e) {
       return false;
+    }
+  }
+
+  Future<bool> logoutUser({String? token}) async {
+    try {
+      Uri uri = Uri.parse('$apiUrl/logout');
+      final box = GetStorage();
+      http.Response response =
+          await http.post(uri, headers: {'Authentication': 'Bearer $token'});
+      print(response.body);
+
+      if (response.statusCode == 200) {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      throw Exception(e);
     }
   }
 }

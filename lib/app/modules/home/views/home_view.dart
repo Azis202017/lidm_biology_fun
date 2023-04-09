@@ -1,3 +1,4 @@
+import 'package:biology_fun/app/data/model/list_material_model.dart';
 import 'package:biology_fun/app/shared/theme/color.dart';
 import 'package:biology_fun/app/shared/theme/font.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class HomeView extends StatelessWidget {
 
     return GetBuilder<HomeController>(initState: (controller) {
       controller.controller?.fetchProfile();
+      controller.controller?.fetchMaterial();
     }, builder: (controller) {
       return Scaffold(
         body: SafeArea(
@@ -52,7 +54,7 @@ class HomeView extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '${controller.user!.data!.username}',
+                                          controller.user!.data.username,
                                           style: h2Bold.copyWith(
                                               color: Colors.white),
                                         ),
@@ -102,19 +104,19 @@ class HomeView extends StatelessWidget {
                                             ),
                                           ),
                                           Text(
-                                            '10 Materi',
+                                            '${controller.dataMaterial.length} Materi',
                                             style: bodyBold,
                                           ),
                                         ],
                                       ),
                                       InkWell(
+                                        onTap: controller.fetchMaterial,
                                         child: Text(
                                           'Belajar lagi',
                                           style: body2Regular.copyWith(
                                             color: primaryColor,
                                           ),
                                         ),
-                                        onTap: () => print('aku ditap'),
                                       ),
                                     ],
                                   ),
@@ -134,27 +136,40 @@ class HomeView extends StatelessWidget {
                           children: [
                             SizedBox(
                               height: 400,
-                              child: GridView.builder(
+                              child: ListView.builder(
                                   shrinkWrap: true,
-                                  gridDelegate:
-                                      const SliverGridDelegateWithMaxCrossAxisExtent(
-                                          maxCrossAxisExtent: 200,
-                                          childAspectRatio: 3 / 2,
-                                          crossAxisSpacing: 20,
-                                          mainAxisSpacing: 20),
-                                  itemCount: [10,20,30,40,60,70,90].length,
+                                  itemCount: controller.dataMaterial.length,
                                   itemBuilder: (BuildContext ctx, index) {
-                                    return GestureDetector(
-                                      onTap: () {
-                                      },
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            color: Colors.amber,
+                                    MaterialClass data =
+                                        controller.dataMaterial[index];
+                                    return Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const SizedBox(height: 24),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors
+                                                .white, // Your desired background color
                                             borderRadius:
-                                                BorderRadius.circular(15)),
-                                        child: const Text('index'),
-                                      ),
+                                                BorderRadius.circular(15),
+                                            boxShadow: cardShadow,
+                                          ),
+                                          child: ListTile(
+                                            onTap: () {
+                                              Get.toNamed(Routes.AR);
+                                            },
+                                            leading: CacheImage(
+                                              imageUrl: data.fileUrl,
+                                              width: 50,
+                                              height: 50,
+                                            ),
+                                            title: Text(
+                                              data.title,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     );
                                   }),
                             )
