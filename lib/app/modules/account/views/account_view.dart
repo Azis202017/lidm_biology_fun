@@ -101,7 +101,7 @@ class AccountView extends StatelessWidget {
                           child: SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                              onPressed: controller.logoutAccount,
+                              onPressed: controller.logout,
                               child: const Text('Keluar'),
                             ),
                           ),
