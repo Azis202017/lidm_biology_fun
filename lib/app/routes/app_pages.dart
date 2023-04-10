@@ -4,6 +4,7 @@ import '../modules/account/bindings/account_binding.dart';
 import '../modules/account/views/account_view.dart';
 import '../modules/ar/bindings/ar_binding.dart';
 import '../modules/ar/views/ar_view.dart';
+
 import '../modules/bottom_navigation/bindings/bottom_navigation_binding.dart';
 import '../modules/bottom_navigation/views/bottom_navigation_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -58,5 +59,6 @@ class AppPages {
       page: () => const ArView(),
       binding: ArBinding(),
     ),
+    
   ];
 }
