@@ -11,7 +11,6 @@ import '../../../services/material/material_service.dart';
 class HomeController extends GetxController {
   User? user;
   List<MaterialClass> dataMaterial = [];
-  bool? isLogin;
 
   final box = GetStorage();
   bool loading = true;
@@ -36,15 +35,5 @@ class HomeController extends GetxController {
     update();
   }
 
-  void logout() async {
-    final storage = GetStorage();
-    try {
-      isLogin = await LoginServices().logoutUser(token: storage.read('token'));
-      if (isLogin!) {
-        storage.remove('token');
-        Get.snackbar('Logout Success', 'Logout Berhasil');
-        Get.offAllNamed(Routes.LOGIN);
-      }
-    } catch (e) {}
-  }
+  
 }

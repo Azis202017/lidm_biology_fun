@@ -160,12 +160,12 @@ class HomeView extends StatelessWidget {
                                               Get.toNamed(Routes.AR);
                                             },
                                             leading: CacheImage(
-                                              imageUrl: data.fileUrl,
+                                              imageUrl: data.fileUrl!,
                                               width: 50,
                                               height: 50,
                                             ),
                                             title: Text(
-                                              data.title,
+                                              data.title!,
                                             ),
                                           ),
                                         ),
