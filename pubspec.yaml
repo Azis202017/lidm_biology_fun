@@ -15,6 +15,7 @@ dependencies:
   easy_quiz_game: ^1.0.1
   flutter:
     sdk: flutter
+  flutter_inappwebview: ^5.7.2+3
   flutter_jigsaw_puzzle: ^0.1.0
   get: 4.6.5
   get_storage: ^2.1.1
