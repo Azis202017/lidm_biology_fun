@@ -1,3 +1,6 @@
+// To parse this JSON data, do
+//
+//     final user = userFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -6,15 +9,15 @@ User userFromJson(String str) => User.fromJson(json.decode(str));
 String userToJson(User data) => json.encode(data.toJson());
 
 class User {
+    bool success;
+    String message;
+    Data data;
+
     User({
         required this.success,
         required this.message,
         required this.data,
     });
-
-    bool success;
-    String message;
-    Data data;
 
     factory User.fromJson(Map<String, dynamic> json) => User(
         success: json["success"],
@@ -30,6 +33,13 @@ class User {
 }
 
 class Data {
+    String id;
+    String username;
+    String role;
+    DateTime createdAt;
+    DateTime updatedAt;
+    Student student;
+
     Data({
         required this.id,
         required this.username,
@@ -38,13 +48,6 @@ class Data {
         required this.updatedAt,
         required this.student,
     });
-
-    String id;
-    String username;
-    String role;
-    DateTime createdAt;
-    DateTime updatedAt;
-    Student student;
 
     factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["id"],
@@ -66,31 +69,37 @@ class Data {
 }
 
 class Student {
+    String id;
+    String userId;
+    String classId;
+    String fullname;
+    String photo;
+    DateTime createdAt;
+    DateTime updatedAt;
+    String photoUrl;
+    Class studentClass;
+
     Student({
         required this.id,
         required this.userId,
         required this.classId,
         required this.fullname,
+        required this.photo,
         required this.createdAt,
         required this.updatedAt,
+        required this.photoUrl,
         required this.studentClass,
     });
-
-    String id;
-    String userId;
-    String classId;
-    String fullname;
-    DateTime createdAt;
-    DateTime updatedAt;
-    Class studentClass;
 
     factory Student.fromJson(Map<String, dynamic> json) => Student(
         id: json["id"],
         userId: json["user_id"],
         classId: json["class_id"],
         fullname: json["fullname"],
+        photo: json["photo"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
+        photoUrl: json["photo_url"],
         studentClass: Class.fromJson(json["class"]),
     );
 
@@ -99,24 +108,26 @@ class Student {
         "user_id": userId,
         "class_id": classId,
         "fullname": fullname,
+        "photo": photo,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
+        "photo_url": photoUrl,
         "class": studentClass.toJson(),
     };
 }
 
 class Class {
+    String id;
+    String name;
+    DateTime createdAt;
+    DateTime updatedAt;
+
     Class({
         required this.id,
         required this.name,
         required this.createdAt,
         required this.updatedAt,
     });
-
-    String id;
-    String name;
-    DateTime createdAt;
-    DateTime updatedAt;
 
     factory Class.fromJson(Map<String, dynamic> json) => Class(
         id: json["id"],
