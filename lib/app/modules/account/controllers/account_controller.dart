@@ -32,7 +32,6 @@ class AccountController extends GetxController {
       storage.remove('token');
       Get.snackbar('Logout Success', 'Logout Berhasil');
       Get.offAllNamed(Routes.LOGIN);
-      print(isLogin);
     } catch (e) {
       throw Exception(e);
     }
