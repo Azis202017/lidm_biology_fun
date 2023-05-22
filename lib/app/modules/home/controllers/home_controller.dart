@@ -4,14 +4,13 @@ import 'package:get_storage/get_storage.dart';
 
 import '../../../data/model/list_material_model.dart';
 import '../../../data/model/user_model.dart';
-import '../../../routes/app_pages.dart';
-import '../../../services/login/login_services.dart';
+
 import '../../../services/material/material_service.dart';
 
 class HomeController extends GetxController {
   User? user;
   List<MaterialClass> dataMaterial = [];
-
+  
   final box = GetStorage();
   bool loading = true;
   @override
