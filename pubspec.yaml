@@ -6,13 +6,9 @@ environment:
   sdk: ">=2.19.4 <3.0.0"
 
 dependencies:
-  ar_flutter_plugin: 0.7.3
-  build_runner: 2.3.3
   cached_network_image: 3.2.3
-  copy_with_extension_gen: 5.0.2
   cupertino_icons: ^1.0.2
   dropdown_search: ^5.0.6
-  easy_quiz_game: ^1.0.1
   flutter:
     sdk: flutter
   flutter_inappwebview: ^5.7.2+3
@@ -21,11 +17,11 @@ dependencies:
   get_storage: ^2.1.1
   google_fonts: ^4.0.3
   http: 0.13.5
+  introduction_screen: ^3.1.8
   just_audio: ^0.9.32
+  lottie: ^2.3.2
   mobile_scanner: ^3.2.0
-  quiz_view: ^1.0.5
-  vector_math: ^2.1.4
-  webview_flutter: ^4.0.7
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_lints: 2.0.1
