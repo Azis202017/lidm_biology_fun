@@ -8,13 +8,14 @@ import '../../../routes/app_pages.dart';
 import '../controllers/ar_controller.dart';
 
 class ArView extends GetView<ArController> with WidgetsBindingObserver {
-  const ArView({Key? key}) : super(key: key);
+  const ArView({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ArController>(dispose: (_) {
       ambiguate(WidgetsBinding.instance)!.removeObserver(this);
-      // Release decoders and buffers back to the operating system making them
-      // available for other apps to use.
+
       controller.player.dispose();
     }, initState: (_) async {
       await Permission.camera.request();
@@ -24,12 +25,14 @@ class ArView extends GetView<ArController> with WidgetsBindingObserver {
     }, builder: (context) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Jantung'),
+          title:  Text(controller.namePage),
           centerTitle: true,
           actions: [
             IconButton(
               onPressed: () {
-                Get.toNamed(Routes.PUZZLE);
+                Get.toNamed(Routes.PUZZLE, arguments : {
+                  'title' : controller.namePage,
+                });
               },
               icon: const ImageIcon(
                 NetworkImage(
@@ -52,6 +55,7 @@ class ArView extends GetView<ArController> with WidgetsBindingObserver {
                   );
                 } else if (playing != true) {
                   return IconButton(
+                    tooltip: 'Dengarkan audio disini',
                     icon: const ImageIcon(
                       NetworkImage(
                           'https://res.cloudinary.com/dkkga3pht/image/upload/v1681096441/Style_Outline_rcpblz.png'),
@@ -61,6 +65,7 @@ class ArView extends GetView<ArController> with WidgetsBindingObserver {
                   );
                 } else if (processingState != ProcessingState.completed) {
                   return IconButton(
+                    tooltip: 'Dengarkan audio disini',
                     icon: const ImageIcon(
                       NetworkImage(
                           'https://res.cloudinary.com/dkkga3pht/image/upload/v1681096439/Style_Bold_pnngsn.png'),
@@ -70,6 +75,7 @@ class ArView extends GetView<ArController> with WidgetsBindingObserver {
                   );
                 } else {
                   return IconButton(
+                    tooltip: 'Dengarkan audio disini',
                     icon: const Icon(Icons.replay),
                     iconSize: 24.0,
                     onPressed: () => controller.player.seek(Duration.zero),
@@ -77,28 +83,39 @@ class ArView extends GetView<ArController> with WidgetsBindingObserver {
                 }
               },
             ),
-          
             const SizedBox(width: 16),
           ],
         ),
         body: InAppWebView(
-            initialUrlRequest: URLRequest(
-              url: Uri.parse('https://6f09-2a09-bac1-34a0-28-00-19b-23.ngrok-free.app'),
+          initialUrlRequest: URLRequest(
+            url: Uri.parse(
+                'https://e8fe-2001-448a-3025-2e40-c8e5-ac00-f247-5176.ngrok-free.app'),
+          ),
+          initialOptions: InAppWebViewGroupOptions(
+            crossPlatform: InAppWebViewOptions(
+              mediaPlaybackRequiresUserGesture: false,
             ),
-            initialOptions: InAppWebViewGroupOptions(
-              crossPlatform: InAppWebViewOptions(
-                mediaPlaybackRequiresUserGesture: false,
-              ),
-            ),
-            onWebViewCreated: (InAppWebViewController controllerInApp) {
-              controller.webViewController = controllerInApp;
-            },
-            androidOnPermissionRequest: (InAppWebViewController controller,
-                String origin, List<String> resources) async {
-              return PermissionRequestResponse(
-                  resources: resources,
-                  action: PermissionRequestResponseAction.GRANT);
-            }),
+          ),
+          onWebViewCreated: (InAppWebViewController controllerInApp) {
+            controller.webViewController = controllerInApp;
+          },
+          androidOnPermissionRequest: (InAppWebViewController controller,
+              String origin, List<String> resources) async {
+            return PermissionRequestResponse(
+                resources: resources,
+                action: PermissionRequestResponseAction.GRANT);
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Get.toNamed(Routes.QUIZ,arguments: {
+              'materialId' : controller.materialId,
+              'namePage' : controller.namePage,
+            });
+          },
+          tooltip: 'Akses kuis dan discussion klik ini',
+          child: const Icon(Icons.quiz_outlined),
+        ),
       );
     });
   }
