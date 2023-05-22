@@ -7,6 +7,8 @@ import '../../../data/model/user_model.dart';
 import '../../../routes/app_pages.dart';
 
 class AccountController extends GetxController {
+  final storage = GetStorage();
+
   User? student;
   bool isLoading = true;
   bool? isLogin;
@@ -25,14 +27,14 @@ class AccountController extends GetxController {
   }
 
   void logout() async {
-    final storage = GetStorage();
     try {
       isLogin = await LoginServices().logoutUser(token: storage.read('token'));
-      if (isLogin!) {
-        storage.remove('token');
-        Get.snackbar('Logout Success', 'Logout Berhasil');
-        Get.offAllNamed(Routes.LOGIN);
-      }
-    } catch (e) {}
+      storage.remove('token');
+      Get.snackbar('Logout Success', 'Logout Berhasil');
+      Get.offAllNamed(Routes.LOGIN);
+      print(isLogin);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }
