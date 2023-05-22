@@ -24,7 +24,7 @@ class OnboardingView extends GetView<OnboardingController> {
             textAlign: TextAlign.center,
           ),
           bodyWidget: Text(
-            'Belajar menjadi menyenangkan dengan berbagai macam gaya belajar yang sudah disediakan, seperti visual, kinestetik, atau audio',
+            'Belajar menjadi menyenangkan dengan berbagai macam gaya belajar yang sudah disediakan, seperti visual, audio, dan kinestetik',
             textAlign: TextAlign.center,
             style: bodyRegular.copyWith(color: greyColor),
           ),
@@ -61,29 +61,28 @@ class OnboardingView extends GetView<OnboardingController> {
             textAlign: TextAlign.center,
           ),
           image: Image.network(
-              'https://res.cloudinary.com/dkkga3pht/image/upload/v1684411289/Group_6873_1_juolpc.png'),
-          
+              'https://res.cloudinary.com/dkkga3pht/image/upload/v1684411327/Group_6873_3_hen316.png'),
         ),
       ],
       showSkipButton: true,
       showDoneButton: true,
       showNextButton: true,
       onDone: () {
-        Get.toNamed(Routes.LOGIN);
+        Get.offAllNamed(Routes.LOGIN);
       },
       onSkip: () {
-        Get.toNamed(Routes.LOGIN);
+        Get.offAllNamed(Routes.LOGIN);
       },
       done: ElevatedButton(
         child: const Text('Login'),
         onPressed: () {
-          Get.toNamed(Routes.LOGIN);
+          Get.offAllNamed(Routes.LOGIN);
         },
       ),
       skip: ElevatedButton(
         child: const Text('Lewati'),
         onPressed: () {
-          Get.toNamed(Routes.LOGIN);
+          Get.offAllNamed(Routes.LOGIN);
         },
       ),
       bodyPadding: const EdgeInsets.only(top: 50),
