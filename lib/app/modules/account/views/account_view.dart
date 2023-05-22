@@ -1,5 +1,6 @@
 import 'package:biology_fun/app/shared/theme/font.dart';
 import 'package:biology_fun/app/shared/widgets/images/image_cache.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -30,7 +31,7 @@ class AccountView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
-                            'Account',
+                            'Profile',
                             style: h1Bold,
                           ),
                         ),
@@ -42,14 +43,19 @@ class AccountView extends StatelessWidget {
                             width: 64,
                             height: 64,
                             child: Stack(
-                              children: const [
-                                CacheImage(
-                                  imageUrl:
-                                      'https://res.cloudinary.com/dkkga3pht/image/upload/v1680436809/Avatar_djrak9.png',
+                              children: [
+                                Container(
                                   width: 64,
                                   height: 64,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: CachedNetworkImageProvider(
+                                      controller.student!.data.student.photoUrl,
+                                    )),
+                                  ),
                                 ),
-                                Align(
+                                const Align(
                                   alignment: Alignment.topRight,
                                   child: CacheImage(
                                     imageUrl:
@@ -75,29 +81,27 @@ class AccountView extends StatelessWidget {
                           child: Text(controller.student!.data.username),
                         ),
                         Center(
-                          child: Text(controller
-                              .student!.data.student.studentClass.name),
+                          child: Text(
+                            controller.student!.data.student.studentClass.name,
+                          ),
                         ),
                         const SizedBox(
                           height: 24,
                         ),
                         ListTile(
                           title: Text(
-                            'Edit Account',
+                            'Ubah Akun',
                             style: h4Regular,
                           ),
                           trailing: const Icon(Icons.arrow_right),
                         ),
-                        ListTile(
-                          title: Text(
-                            'Help',
-                            style: h4Regular,
-                          ),
-                          trailing: const Icon(Icons.arrow_right),
-                        ),
+                        
                         const SizedBox(height: 20),
                         Padding(
-                          padding: const EdgeInsets.only(left:16.0, right : 16,),
+                          padding: const EdgeInsets.only(
+                            left: 16.0,
+                            right: 16,
+                          ),
                           child: SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
