@@ -4,6 +4,9 @@ import 'package:just_audio/just_audio.dart';
 import 'package:audio_session/audio_session.dart';
 
 class ArController extends GetxController {
+  String namePage = Get.arguments['title'];
+  String urlAudio = Get.arguments['audio'];
+  String materialId = Get.arguments['materialId'];
   InAppWebViewController? webViewController;
 
   final player = AudioPlayer();
@@ -15,15 +18,14 @@ class ArController extends GetxController {
     // Listen to errors during playback.
     player.playbackEventStream.listen((event) {},
         onError: (Object e, StackTrace stackTrace) {
-      print('A stream error occurred: $e');
+      throw Exception(e);
     });
     // Try to load audio from a source and catch any errors.
     try {
       // AAC example: https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.aac
-      await player.setAudioSource(AudioSource.uri(Uri.parse(
-          "https://res.cloudinary.com/dkkga3pht/video/upload/v1681098197/Jantung_esn2dh.mp3")));
+      await player.setAudioSource(AudioSource.uri(Uri.parse(urlAudio)));
     } catch (e) {
-      print("Error loading audio source: $e");
+      throw Exception(e);
     }
   }
 }
