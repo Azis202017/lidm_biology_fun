@@ -23,6 +23,7 @@ class CacheImage extends StatelessWidget {
       imageUrl: imageUrl,
       width: width ?? 0,
       height: height ?? 0,
+      
       placeholder: (context, url) => placeHolder ?? const SizedBox(),
       fit: fit,
       alignment: alignment ?? Alignment.topCenter,
